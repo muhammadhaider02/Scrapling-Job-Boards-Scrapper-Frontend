@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JobSwipe Dashboard",
+  title: "JobSwipe",
   description: "Live view of scraped jobs from LinkedIn, Indeed, Mustakbil, and Rozee",
 };
 
