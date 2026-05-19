@@ -14,8 +14,8 @@ function formatCount(n: number): string {
   return String(n);
 }
 
-function applyFilters(query: any, filters: FilterState, skipSource = false) {
-  if (!skipSource && filters.source !== "all") {
+function applyFilters(query: any, filters: FilterState) {
+  if (filters.source !== "all") {
     query = query.eq("job_source", filters.source);
   }
   if (filters.jobType !== "all") {
@@ -43,23 +43,19 @@ export function StatsBar({ filters }: Props) {
       );
       const baseLinkedin = applyFilters(
         supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "linkedin"),
-        filters,
-        true
+        filters
       );
       const baseIndeed = applyFilters(
         supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "indeed"),
-        filters,
-        true
+        filters
       );
       const baseMustakbil = applyFilters(
         supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "mustakbil"),
-        filters,
-        true
+        filters
       );
       const baseRozee = applyFilters(
         supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "rozee"),
-        filters,
-        true
+        filters
       );
       const baseCompanies = applyFilters(
         supabase.from("jobs").select("company"),
