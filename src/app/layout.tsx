@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "JobSwipe",
-  description: "Live view of scraped jobs from LinkedIn, Indeed, Mustakbil, and Rozee",
+  description: "Live view of scraped jobs from LinkedIn and Indeed",
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;

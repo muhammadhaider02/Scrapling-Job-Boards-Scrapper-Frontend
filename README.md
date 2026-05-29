@@ -11,7 +11,7 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-FF0055?logo=framer&logoColor=white)](https://www.framer.com/motion)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com)
 
-Browse and filter jobs scraped from LinkedIn, Indeed, Rozee.pk and Mustakbil across 20+ roles in Pakistan. Connects directly to Supabase, no backend API needed.
+Browse and filter jobs scraped from LinkedIn and Indeed across 60 roles in Pakistan. Connects directly to Supabase, no backend API needed.
 
 </div>
 
@@ -33,7 +33,7 @@ Browse and filter jobs scraped from LinkedIn, Indeed, Rozee.pk and Mustakbil acr
 
 ## Overview
 
-JobSwipe is the frontend companion to the [Job Board Scraper](https://github.com/muhammadhaider02/Scrapling-Job-Boards-Scrapper) backend. The scraper runs on a daily schedule via GitHub Actions, populating a Supabase database with enriched job listings from 4 Pakistani job boards. This dashboard reads directly from that database using the Supabase client SDK.
+JobSwipe is the frontend companion to the [Job Board Scraper](https://github.com/muhammadhaider02/Scrapling-Job-Boards-Scrapper) backend. The scraper runs on a daily schedule via GitHub Actions, populating a Supabase database with enriched job listings from LinkedIn and Indeed. This dashboard reads directly from that database using the Supabase client SDK.
 
 Stats and job counts are fetched with exact count queries against the full dataset. The job table is paginated (50 per page) and all filters (search, source, job type, location) are pushed to the database so results stay accurate regardless of dataset size.
 
@@ -44,7 +44,7 @@ Stats and job counts are fetched with exact count queries against the full datas
 | Feature | Description |
 |:---|:---|
 | **Live stats bar** | Total jobs, per-platform breakdown, unique companies and locations, all queried from the full database |
-| **Multi-filter search** | Filter by source (LinkedIn/Indeed/Rozee/Mustakbil), job type, location, or free-text search on title and company |
+| **Multi-filter search** | Filter by source (LinkedIn/Indeed), job type, location or free-text search on title and company |
 | **Paginated table** | 50 jobs per page with prev/next navigation and total count |
 | **Job detail modal** | Click any row to see full description, skills, experience, education and a link to the original posting |
 | **Dedicated job pages** | Direct URL access to any job via `/jobs/[id]` |
@@ -131,4 +131,4 @@ package.json                 <- dependencies and scripts
 
 ## Backend
 
-This frontend is powered by the [Job Board Scraper](https://github.com/muhammadhaider02/Scrapling-Job-Boards-Scrapper), a Scrapling pipeline that scrapes LinkedIn, Indeed, Rozee.pk and Mustakbil for 20+ roles across Pakistan. It runs daily via GitHub Actions, enriches each posting with skill extraction and experience parsing, deduplicates via Redis, and upserts everything to Supabase.
+This frontend is powered by the [Job Board Scraper](https://github.com/muhammadhaider02/Scrapling-Job-Boards-Scrapper), a Scrapling pipeline that scrapes LinkedIn and Indeed for 60 roles across Pakistan. It runs daily via GitHub Actions, enriches each posting with skill extraction and experience parsing, deduplicates via Redis, and upserts everything to Supabase.

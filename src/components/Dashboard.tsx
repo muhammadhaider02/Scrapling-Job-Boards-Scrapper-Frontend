@@ -72,7 +72,7 @@ export function Dashboard() {
   }, [filters]);
 
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
-  const sources = ["all", "linkedin", "indeed", "mustakbil", "rozee"];
+  const sources = ["all", "linkedin", "indeed"];
   const jobTypes = ["all", "Full-time", "Part-time", "Contract", "Internship"];
 
   return (
@@ -83,7 +83,7 @@ export function Dashboard() {
             JobSwipe
           </h1>
           <p className="text-zinc-500 mt-1 text-sm">
-            Live data from 4 job boards across Pakistan
+            Live data from LinkedIn and Indeed across Pakistan
           </p>
         </div>
         <button

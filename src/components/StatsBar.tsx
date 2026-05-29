@@ -49,25 +49,15 @@ export function StatsBar({ filters }: Props) {
         supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "indeed"),
         filters
       );
-      const baseMustakbil = applyFilters(
-        supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "mustakbil"),
-        filters
-      );
-      const baseRozee = applyFilters(
-        supabase.from("jobs").select("*", { count: "exact", head: true }).eq("job_source", "rozee"),
-        filters
-      );
       const baseCompanies = applyFilters(
         supabase.from("jobs").select("company"),
         filters
       );
-      const [totalRes, linkedinRes, indeedRes, mustakbilRes, rozeeRes, companiesRes] =
+      const [totalRes, linkedinRes, indeedRes, companiesRes] =
         await Promise.all([
           baseTotal,
           baseLinkedin,
           baseIndeed,
-          baseMustakbil,
-          baseRozee,
           baseCompanies,
         ]);
 
@@ -79,8 +69,6 @@ export function StatsBar({ filters }: Props) {
         total: totalRes.count || 0,
         linkedin: linkedinRes.count || 0,
         indeed: indeedRes.count || 0,
-        mustakbil: mustakbilRes.count || 0,
-        rozee: rozeeRes.count || 0,
         companies: uniqueCompanies,
       });
       setLoading(false);
@@ -92,13 +80,11 @@ export function StatsBar({ filters }: Props) {
     { label: "Total Jobs", value: stats.total, color: "bg-sky-500" },
     { label: "LinkedIn", value: stats.linkedin, color: "bg-blue-600" },
     { label: "Indeed", value: stats.indeed, color: "bg-violet-600" },
-    { label: "Mustakbil", value: stats.mustakbil, color: "bg-emerald-600" },
-    { label: "Rozee", value: stats.rozee, color: "bg-rose-500" },
     { label: "Companies", value: stats.companies, color: "bg-amber-500" },
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {statItems.map((stat, i) => (
         <motion.div
           key={stat.label}
